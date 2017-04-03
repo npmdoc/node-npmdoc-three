@@ -1,17 +1,40 @@
 {
-    "buildNpmdoc":"three",
+    "author": "kai zhu <kaizhu256@gmail.com>",
+    "buildNpmdoc": "three",
+    "description": "api documentation for [three (v0.84.0)](http://threejs.org/) [![npm package](https://img.shields.io/npm/v/npmdoc-three.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-three) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-three.svg)](https://travis-ci.org/npmdoc/node-npmdoc-three)",
     "devDependencies": {
-        "three": "*",
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
+        "three": "*",
         "utility2": "kaizhu256/node-utility2#alpha"
     },
-    "name":"npmdoc-three",
+    "engines": {
+        "node": ">=4.0"
+    },
+    "homepage": "https://github.com/npmdoc/node-npmdoc-three",
+    "keywords": [
+        "documentation",
+        "three"
+    ],
+    "license": "MIT",
+    "main": "lib.npmdoc_three.js",
+    "name": "npmdoc-three",
+    "nameAlias": "npmdoc_three",
+    "nameOriginal": "npmdoc-three",
+    "os": [
+        "darwin",
+        "linux"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/npmdoc/node-npmdoc-three.git"
     },
     "scripts": {
-        "build-ci": "utility2 shReadmeTest build_ci.sh"
+        "build-ci": "utility2 shReadmeTest build_ci.sh",
+        "env": "env",
+        "heroku-postbuild": "(set -e; npm install \"kaizhu256/node-utility2#alpha\"; utility2 shDeployHeroku)",
+        "postinstall": "if [ -f npm_scripts.sh ]; then ./npm_scripts.sh postinstall; fi",
+        "start": "(set -e; export PORT=${PORT:-8080}; utility2 start test.js)",
+        "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
     },
     "version": "0.0.1"
 }
